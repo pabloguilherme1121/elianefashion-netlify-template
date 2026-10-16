@@ -11,11 +11,11 @@ Template completo para loja virtual com:
 ## O que está realmente pronto
 
 - `index.html` e `styles.css`: **prévia visual responsiva**, sem formulário ou pagamento. Pode ser publicada para revisão estética.
-- `netlify.toml`: hospedagem da prévia estática, com política CSP e sem pasta de Netlify Functions ativa.
+- `netlify.toml`: hospedagem da prévia estática, com política CSP e sem pasta de Netlify Functions ativa. A publicação gera `dist/` com **apenas** `index.html` e `styles.css`; os arquivos legados permanecem no Git, mas não são enviados ao site público.
 - Os arquivos legados `functions*.js.js`, `adminindex.html.html` e `sw.js.js` permanecem apenas como **referências não homologadas** e não são copiados para rotas de funções da Netlify. **Não renomeie ou publique esses endpoints sem implementar autenticação, validação de estoque/preço no servidor e webhooks de pagamento.**
 - O `manifest.json` original referencia ícones ausentes, portanto a prévia **não anuncia instalação PWA**.
 
-Validação local: `npm test` (Node 24). Para testar a página estática use `python -m http.server 8000`; para a versão Netlify, configure o deploy do repositório sem integrar serviços reais.
+Validação local: `npm run check` (Node 24). Para testar a página estática use `python -m http.server 8000`; para a versão Netlify, configure o deploy do repositório sem integrar serviços reais.
 
 ### Bloqueadores antes de vender
 

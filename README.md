@@ -8,6 +8,19 @@ Template completo para loja virtual com:
 - PWA
 - Painel Admin
 
+## O que está realmente pronto
+
+- `index.html` e `styles.css`: **prévia visual responsiva**, sem formulário ou pagamento. Pode ser publicada para revisão estética.
+- `netlify.toml`: hospedagem da prévia estática, com política CSP e sem pasta de Netlify Functions ativa.
+- Os arquivos legados `functions*.js.js`, `adminindex.html.html` e `sw.js.js` permanecem apenas como **referências não homologadas** e não são copiados para rotas de funções da Netlify. **Não renomeie ou publique esses endpoints sem implementar autenticação, validação de estoque/preço no servidor e webhooks de pagamento.**
+- O `manifest.json` original referencia ícones ausentes, portanto a prévia **não anuncia instalação PWA**.
+
+Validação local: `npm test` (Node 24). Para testar a página estática use `python -m http.server 8000`; para a versão Netlify, configure o deploy do repositório sem integrar serviços reais.
+
+### Bloqueadores antes de vender
+
+O código demonstrativo de atualização de estoque não verifica autorização, e o código demonstrativo de pagamentos aceita preços enviados pelo navegador. Ambos devem ser substituídos e auditados antes de expor funções publicamente. Configure Firebase e Mercado Pago apenas em ambiente de teste primeiro.
+
 ## Deploy rápido
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/pabloguilherme1121/elianefashion-netlify-template)

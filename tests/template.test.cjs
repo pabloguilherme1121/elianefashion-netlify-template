@@ -9,7 +9,11 @@ const read = name => fs.readFileSync(path.join(root, name), "utf8");
 test("Netlify can publish the static entrypoint and not the unfinished checkout functions", () => {
   assert.ok(fs.existsSync(path.join(root, "index.html")));
   const config = read("netlify.toml");
-  assert.match(config, /publish\s*=\s*"\."/);
+  assert.match(config, /publish\s*=\s*"dist"/);
+  assert.match(config, /command\s*=\s*"npm run build"/);
+  const published = fs.readdirSync(path.join(root, "dist")).sort();
+  assert.deepEqual(published, ["index.html", "styles.css"]);
+  assert.doesNotMatch(read("dist/index.html"), /<script\b/i);
   assert.doesNotMatch(config, /functions\s*=/);
   assert.ok(!fs.existsSync(path.join(root, "functions")));
 });

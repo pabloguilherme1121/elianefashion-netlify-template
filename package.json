@@ -1,13 +1,10 @@
 {
-  "name": "elianefashion-functions",
-  "version": "1.0.0",
-  "dependencies": {
-    "mercadopago": "^2.0.0",
-    "axios": "^1.6.0",
-    "firebase-admin": "^11.0.0"
-  },
+  "name": "eliane-fashion-preview",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
-    "test": "node --test tests/*.test.cjs"
+    "test": "node --test tests/*.test.cjs",
+    "build": "node scripts/build-preview.cjs",
+    "check": "npm run build && npm test"
   }
 }
